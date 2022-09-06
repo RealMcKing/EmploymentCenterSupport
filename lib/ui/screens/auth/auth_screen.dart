@@ -52,7 +52,7 @@ class AuthScreen extends StatelessWidget {
               ],
             ),
             DraggableScrollableSheet(
-              minChildSize: 0.11,
+                minChildSize: 0.11,
               initialChildSize: 0.11,
               maxChildSize: 0.23,
               builder:

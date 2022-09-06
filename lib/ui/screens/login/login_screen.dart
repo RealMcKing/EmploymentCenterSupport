@@ -8,6 +8,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                   fontSize: 18,
                 ),
                 filled: true,
-                isDense: true,
+                isDense: false,
                 contentPadding: const EdgeInsets.symmetric(
                   vertical: 10,
                   horizontal: 10,
@@ -100,7 +101,16 @@ class LoginScreen extends StatelessWidget {
                   fontSize: 18,
                 ),
                 filled: true,
-                isDense: true,
+                isDense: false,
+                suffixIcon: IconButton(
+                  iconSize: 20.0,
+                  onPressed: () {},
+                  splashRadius: 18.0,
+                  icon: const Icon(
+                    Icons.remove_red_eye_outlined,
+                    color: Color.fromRGBO(111, 119, 137, 1),
+                  ),
+                ),
                 contentPadding: const EdgeInsets.symmetric(
                   vertical: 10,
                   horizontal: 10,
@@ -186,6 +196,7 @@ class LoginScreen extends StatelessWidget {
                 'Sign In',
               ),
             ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.11)
           ],
         ),
       ),
