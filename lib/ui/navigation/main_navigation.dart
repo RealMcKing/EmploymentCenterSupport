@@ -12,7 +12,6 @@ abstract class MainNavigationRouteNames {
       '/main/vacation_list/vacation_details/fit_back_vacation';
   static const informationClientScreen = '/main/client';
   static const informationSupportScreen = '/main/support';
-  static const informationContactsScreen = '/main/contacts';
   static const resumeEditorScreen = '/main/resume_editor';
   static const userEditorScreen = '/main/user_editor';
 }
@@ -33,8 +32,6 @@ class MainNavigation {
         _screenFactory.makeInformationClient(),
     MainNavigationRouteNames.informationSupportScreen: (_) =>
         _screenFactory.makeInformationSupport(),
-    MainNavigationRouteNames.informationContactsScreen: (_) =>
-        _screenFactory.makeInformationContacts(),
     MainNavigationRouteNames.resumeEditorScreen: (_) =>
         _screenFactory.makeResumeEditor(),
     MainNavigationRouteNames.userEditorScreen: (_) =>

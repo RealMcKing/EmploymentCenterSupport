@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:ecs/domain/factory/screen_factory.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AuthScreen extends StatelessWidget {
-  AuthScreen({Key? key}) : super(key: key);
+  static final _screenFactory = ScreenFactory();
 
-  final _screenFactory = ScreenFactory();
+  const AuthScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +16,13 @@ class AuthScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: const Color(0xFFFFFFFF),
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFFFFFF),
           elevation: 0,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Color(0xFFFFFFFF),
+            statusBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.dark,
+          ),
+          backgroundColor: const Color(0xFFFFFFFF),
           flexibleSpace: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: const [
@@ -52,7 +59,7 @@ class AuthScreen extends StatelessWidget {
               ],
             ),
             DraggableScrollableSheet(
-                minChildSize: 0.11,
+              minChildSize: 0.11,
               initialChildSize: 0.11,
               maxChildSize: 0.23,
               builder:
@@ -106,45 +113,48 @@ class AuthScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 16.0),
                           ElevatedButton.icon(
-                            onPressed: () {final snackBar = SnackBar(
-                              content: Container(
-                                padding: const EdgeInsets.all(16.0),
-                                decoration: const BoxDecoration(
-                                  color: Color(0xFF4E8D7C),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(16.0),
+                            onPressed: () {
+                              final snackBar = SnackBar(
+                                content: Container(
+                                  padding: const EdgeInsets.all(16.0),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFF4E8D7C),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(16.0),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: const [
+                                      Text(
+                                        "Excellent",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        'You were able to log in with the help of Tim Cook',
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 12,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: const [
-                                    Text(
-                                      "Excellent",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(height: 8),
-                                    Text(
-                                      'You were able to log in with the help of Tim Cook',
-                                      maxLines: 2,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 12,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              behavior: SnackBarBehavior.floating,
-                              backgroundColor: Colors.transparent,
-                              elevation: 0,
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                behavior: SnackBarBehavior.floating,
+                                backgroundColor: Colors.transparent,
+                                elevation: 0,
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
                             },
                             style: ElevatedButton.styleFrom(
                               textStyle: const TextStyle(
@@ -161,7 +171,11 @@ class AuthScreen extends StatelessWidget {
                                 vertical: 9,
                               ),
                             ),
-                            icon: const Icon(Icons.apple_rounded),
+                            icon: SvgPicture.asset(
+                              'assets/icons/google.svg',
+                              height: 20.0,
+                              width: 20.0,
+                            ),
                             label: const Text(
                               'Sign In',
                             ),

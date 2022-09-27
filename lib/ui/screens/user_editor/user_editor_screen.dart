@@ -39,7 +39,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'Name',
+                hintText: 'First name',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -85,7 +85,53 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'Surname',
+                hintText: 'Last name',
+                hintStyle: const TextStyle(
+                  color: Color.fromRGBO(111, 119, 137, 1),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                ),
+                filled: true,
+                isDense: false,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 10,
+                ),
+                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            TextFormField(
+              autocorrect: false,
+              enableSuggestions: false,
+              textCapitalization: TextCapitalization.none,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.datetime,
+              cursorRadius: const Radius.circular(4),
+              cursorColor: const Color(0xFFF98121),
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+                fontSize: 18,
+              ),
+              decoration: InputDecoration(
+                hintText: 'Birthday',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -181,52 +227,6 @@ class UserEditorScreen extends StatelessWidget {
               ),
               decoration: InputDecoration(
                 hintText: 'City',
-                hintStyle: const TextStyle(
-                  color: Color.fromRGBO(111, 119, 137, 1),
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
-                filled: true,
-                isDense: false,
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 10,
-                ),
-                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              autocorrect: false,
-              enableSuggestions: false,
-              textCapitalization: TextCapitalization.none,
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.datetime,
-              cursorRadius: const Radius.circular(4),
-              cursorColor: const Color(0xFFF98121),
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-              ),
-              decoration: InputDecoration(
-                hintText: 'Birthday',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,

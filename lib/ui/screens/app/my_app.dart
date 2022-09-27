@@ -1,4 +1,5 @@
 import 'package:ecs/ui/navigation/main_navigation.dart';
+
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {

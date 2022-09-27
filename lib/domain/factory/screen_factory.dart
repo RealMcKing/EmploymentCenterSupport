@@ -1,8 +1,6 @@
-
 import 'package:ecs/ui/screens/auth/auth_screen.dart';
 import 'package:ecs/ui/screens/information/information_screen.dart';
 import 'package:ecs/ui/screens/information_client/information_client_screen.dart';
-import 'package:ecs/ui/screens/information_contacts/information_contacts_screen.dart';
 import 'package:ecs/ui/screens/information_support/information_support_screen.dart';
 import 'package:ecs/ui/screens/login/login_screen.dart';
 import 'package:ecs/ui/screens/main/main_screen.dart';
@@ -31,7 +29,6 @@ class ScreenFactory {
     return const LoginScreen();
   }
 
-
   Widget makeSignUp() {
     return const SignUpScreen();
   }
@@ -56,20 +53,16 @@ class ScreenFactory {
     return const VacationFitBackScreen();
   }
 
-  Widget makeInformation(){
+  Widget makeInformation() {
     return const InformationScreen();
   }
 
-  Widget makeInformationClient(){
+  Widget makeInformationClient() {
     return const InformationClientScreen();
   }
 
-  Widget makeInformationSupport(){
+  Widget makeInformationSupport() {
     return const InformationSupportScreen();
-  }
-
-  Widget makeInformationContacts(){
-    return const InformationContactsScreen();
   }
 
   Widget makeResume() {

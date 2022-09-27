@@ -1,5 +1,6 @@
 import 'package:ecs/domain/factory/screen_factory.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -22,6 +23,15 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Color(0xFFFFFFFF),
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.dark,
+        ),
+        elevation: 0,
+        toolbarHeight: 0,
+      ),
       body: IndexedStack(
         index: _selectedIndex,
         children: [
@@ -37,10 +47,10 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (index) => _onItemTapped(index),
         elevation: 0,
         showUnselectedLabels: false,
-
-        backgroundColor: const Color(0xFFFFFFFF),
-        selectedIconTheme: const IconThemeData(color: Color.fromRGBO(249, 129, 33, 1), size: 30.0),
-        unselectedIconTheme: const IconThemeData(color: Color.fromRGBO(130, 130, 130, 1), size: 24.0),
+        selectedIconTheme: const IconThemeData(
+            color: Color.fromRGBO(249, 129, 33, 1), size: 30.0),
+        unselectedIconTheme: const IconThemeData(
+            color: Color.fromRGBO(130, 130, 130, 1), size: 24.0),
         selectedItemColor: const Color.fromRGBO(249, 129, 33, 1),
         unselectedItemColor: const Color.fromRGBO(130, 130, 130, 1),
         selectedLabelStyle: const TextStyle(

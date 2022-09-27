@@ -15,7 +15,8 @@ class SignUpScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            const Text('Well met, Dear friend',
+            const Text(
+              'Well met, Dear friend',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 64,
@@ -249,9 +250,14 @@ class SignUpScreen extends StatelessWidget {
               ),
               child: const Text(
                 'Sign Up',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFFFFFFFF),
+                ),
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.11)
+            SizedBox(height: MediaQuery.of(context).size.height * 0.11),
           ],
         ),
       ),
