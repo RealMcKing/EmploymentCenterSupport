@@ -172,7 +172,7 @@ class _JobBlockTagsListWidget extends StatelessWidget {
           return const _JobBlockTagWidget();
         },
         separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(width: 8);
+          return const SizedBox(width: 8.0);
         },
         itemCount: 7,
         padding: const EdgeInsets.all(4.0),
