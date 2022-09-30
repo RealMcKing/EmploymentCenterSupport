@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:ecs/domain/factory/screen_factory.dart';
-
 class InformationClientScreen extends StatelessWidget {
-  static final _screenFactory = ScreenFactory();
-
   const InformationClientScreen({Key? key}) : super(key: key);
 
   @override
@@ -71,7 +67,7 @@ class InformationClientScreen extends StatelessWidget {
           body: const TabBarView(
             physics: BouncingScrollPhysics(),
             children: [
-              Icon(Icons.abc),
+              EntrepreneursListWidget(),
               Icon(Icons.abc),
               Icon(Icons.abc),
               Icon(Icons.abc),
@@ -81,4 +77,90 @@ class InformationClientScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class EntrepreneursListWidget extends StatelessWidget {
+  const EntrepreneursListWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const informationList = [
+      InformationExpansionTile(title: "Text 1", expansionText: 'Text ne 1'),
+      InformationExpansionTile(title: "Text 2", expansionText: 'Text ne 2'),
+      InformationExpansionTile(title: "Text 3", expansionText: 'Text ne 3'),
+      InformationExpansionTile(title: "Text 4", expansionText: 'Text ne 4'),
+      InformationExpansionTile(title: "Text 5", expansionText: 'Text ne 5'),
+      InformationExpansionTile(title: "Text 6", expansionText: 'Text ne 6'),
+    ];
+    return ListView.separated(
+      physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      itemBuilder: (BuildContext context, int index) {
+        return InformationExpansionTileWidget(
+          informationList: informationList[index],
+        );
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return const SizedBox(height: 8);
+      },
+      itemCount: informationList.length,
+    );
+  }
+}
+
+class InformationExpansionTileWidget extends StatelessWidget {
+  final InformationExpansionTile informationList;
+
+  const InformationExpansionTileWidget({
+    Key? key,
+    required this.informationList,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shadowColor: Colors.transparent,
+      color: const Color(0xFFF98121).withOpacity(0.12),
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      clipBehavior: Clip.antiAlias,
+      margin: EdgeInsets.zero,
+      child: ExpansionTile(
+        collapsedIconColor: const Color(0xFFF98121),
+        iconColor: const Color(0xFFF98121),
+        expandedAlignment: Alignment.topLeft,
+        childrenPadding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 8.0),
+        title: Text(
+          informationList.title,
+          style: const TextStyle(
+            color: Color(0xFF000000),
+            fontWeight: FontWeight.w500,
+            fontSize: 18.0,
+          ),
+        ),
+        children: [
+          Text(
+            informationList.expansionText,
+            style: const TextStyle(
+              color: Color(0xFF000000),
+              fontWeight: FontWeight.w400,
+              fontSize: 16.0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class InformationExpansionTile {
+  final String title;
+  final String expansionText;
+
+  const InformationExpansionTile({
+    required this.title,
+    required this.expansionText,
+  });
 }

@@ -17,10 +17,11 @@ class MyApp extends StatelessWidget {
         textSelectionTheme: TextSelectionThemeData(
           selectionHandleColor: const Color(0xFFF98121).withOpacity(0.75),
         ),
+        dividerColor: Colors.transparent,
       ),
       routes: mainNavigation.routes,
       onGenerateRoute: mainNavigation.onGenerateRoute,
-      initialRoute: MainNavigationRouteNames.informationClientScreen,
+      initialRoute: MainNavigationRouteNames.mainScreen,
     );
   }
 }
