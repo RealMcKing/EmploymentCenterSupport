@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,7 +10,7 @@ class UserScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () => signOut(),
         label: Column(
           children: const [
             Text(
@@ -247,5 +248,9 @@ class UserScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void signOut()  {
+      FirebaseAuth.instance.signOut();
   }
 }

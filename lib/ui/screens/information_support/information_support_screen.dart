@@ -17,7 +17,7 @@ class InformationSupportScreen extends StatelessWidget {
               const SliverAppBar(
                 centerTitle: true,
                 title: Text(
-                  'For clients of the EC',
+                  'Additional Information',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   style: TextStyle(
@@ -67,7 +67,7 @@ class InformationSupportScreen extends StatelessWidget {
           body: const TabBarView(
             physics: BouncingScrollPhysics(),
             children: [
-              Icon(Icons.abc),
+              EntrepreneursListWidget(),
               Icon(Icons.abc),
               Icon(Icons.abc),
               InformationBlockWidget(),
@@ -85,12 +85,18 @@ class InformationBlockWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const informationList = [
-      InformationExpansionTile(title: "Slaves Region #1", expansionText: '+38000000000'),
-      InformationExpansionTile(title: "Slaves Region #2", expansionText: 'Text ne 2'),
-      InformationExpansionTile(title: "Slaves Region #3", expansionText: 'Text ne 3'),
-      InformationExpansionTile(title: "Slaves Region #4", expansionText: 'Text ne 4'),
-      InformationExpansionTile(title: "Slaves Region #5", expansionText: 'Text ne 5'),
-      InformationExpansionTile(title: "Slaves Region #6", expansionText: 'Text ne 6'),
+      InformationExpansionTile(
+          title: "Slaves Region #1", expansionText: '+38000000000'),
+      InformationExpansionTile(
+          title: "Slaves Region #2", expansionText: 'Text ne 2'),
+      InformationExpansionTile(
+          title: "Slaves Region #3", expansionText: 'Text ne 3'),
+      InformationExpansionTile(
+          title: "Slaves Region #4", expansionText: 'Text ne 4'),
+      InformationExpansionTile(
+          title: "Slaves Region #5", expansionText: 'Text ne 5'),
+      InformationExpansionTile(
+          title: "Slaves Region #6", expansionText: 'Text ne 6'),
     ];
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
@@ -182,4 +188,85 @@ class InformationExpansionTile {
     required this.title,
     required this.expansionText,
   });
+}
+
+class EntrepreneursListWidget extends StatelessWidget {
+  const EntrepreneursListWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const informationList = [
+      InformationExpansionTile(
+          title: "Who can get the status of unemployed",
+          expansionText:
+              'All unemployed citizens who are ready to work, as well as employed citizens who want to change their place of work, find a part-time job or in their free time can apply to the State Employment Service for assistance in finding employment. Registration of the unemployed who apply for employment assistance is carried out by the employment center, regardless of the registered place of residence or stay.'
+              '\nAccording to the first part of Article 43 of the Law of Ukraine “On Employment of the Population” (hereinafter referred to as the Law) , the status of the unemployed can be received by:'
+              '\n– a person of working age before the appointment of a pension (in particular, on preferential terms or for long service), who, due to the lack of work, does not have earnings or other income provided for by law, is ready and able to start work;'
+              '\n– a person with a disability who has not reached the retirement age established by Article 26 of the Law of Ukraine “On Compulsory State Pension Insurance” and receives a disability pension or social assistance in accordance with the laws of Ukraine “On State Social Assistance to Persons with Disabilities from Childhood and Children with Disabilities” and “On State Social Benefits for Persons Not Entitled to a Pension and Persons with Disabilities”; '
+              '\n- a person under the age of 16 who worked and was released due to changes in the organization of production and labor, in particular, the termination or re-profiling of enterprises, institutions and organizations, a reduction in the number (staff) of employees.'
+              '\nThe status of the unemployed is granted to the persons indicated in part one of this article upon their personal application (including those submitted by means of electronic identification) in the absence of a suitable job from the first day of registration with the territorial bodies of the central executive body implementing the state policy in the field of employment and labor migration, regardless of the registered place of residence or place of stay.'
+              '\nAccording to part 51 of section XI of the Law, for the period of quarantine, the status of unemployed is granted without presenting requirements for the presence of a suitable job.)',),
+    ];
+    return ListView.separated(
+      physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      itemBuilder: (BuildContext context, int index) {
+        return InformationExpansionTileWidgetSecond(
+          informationList: informationList[index],
+        );
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return const SizedBox(height: 8);
+      },
+      itemCount: informationList.length,
+    );
+  }
+}
+
+class InformationExpansionTileWidgetSecond extends StatelessWidget {
+  final InformationExpansionTile informationList;
+
+  const InformationExpansionTileWidgetSecond({
+    Key? key,
+    required this.informationList,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shadowColor: Colors.transparent,
+      color: const Color(0xFFF98121).withOpacity(0.12),
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      clipBehavior: Clip.antiAlias,
+      margin: EdgeInsets.zero,
+      child: ExpansionTile(
+        collapsedIconColor: const Color(0xFFF98121),
+        iconColor: const Color(0xFFF98121),
+        expandedAlignment: Alignment.topLeft,
+        childrenPadding:
+            const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 8.0),
+        title: Text(
+          informationList.title,
+          style: const TextStyle(
+            color: Color(0xFF000000),
+            fontWeight: FontWeight.w500,
+            fontSize: 18.0,
+          ),
+        ),
+        children: [
+          Text(
+            informationList.expansionText,
+            style: const TextStyle(
+              color: Color(0xFF000000),
+              fontWeight: FontWeight.w400,
+              fontSize: 16.0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

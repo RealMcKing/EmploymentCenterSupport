@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: mainNavigation.routes,
       onGenerateRoute: mainNavigation.onGenerateRoute,
-      initialRoute: MainNavigationRouteNames.mainScreen,
+      initialRoute: MainNavigationRouteNames.loaderScreen,
     );
   }
 }

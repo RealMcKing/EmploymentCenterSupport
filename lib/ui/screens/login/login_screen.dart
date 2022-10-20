@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:ecs/ui/screens/login/login_model.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -33,176 +36,174 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 32.0),
-            TextField(
-              autocorrect: false,
-              enableSuggestions: false,
-              textCapitalization: TextCapitalization.none,
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.emailAddress,
-              cursorRadius: const Radius.circular(4),
-              cursorColor: const Color(0xFFF98121),
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-              ),
-              decoration: InputDecoration(
-                hintText: 'Email',
-                hintStyle: const TextStyle(
-                  color: Color.fromRGBO(111, 119, 137, 1),
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
-                filled: true,
-                isDense: false,
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 10,
-                ),
-                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-              ),
-            ),
+            const _EmailTextFieldWidget(),
             const SizedBox(height: 16.0),
-            TextField(
-              autocorrect: false,
-              enableSuggestions: false,
-              textCapitalization: TextCapitalization.none,
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.visiblePassword,
-              obscureText: true,
-              cursorRadius: const Radius.circular(4),
-              cursorColor: const Color(0xFFF98121),
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-              ),
-              decoration: InputDecoration(
-                hintText: 'Password',
-                hintStyle: const TextStyle(
-                  color: Color.fromRGBO(111, 119, 137, 1),
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
-                filled: true,
-                isDense: false,
-                suffixIcon: IconButton(
-                  iconSize: 20.0,
-                  onPressed: () {},
-                  splashRadius: 18.0,
-                  icon: const Icon(
-                    Icons.remove_red_eye_outlined,
-                    color: Color.fromRGBO(111, 119, 137, 1),
-                  ),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 10,
-                ),
-                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-              ),
-            ),
+            const _PasswordTextFieldWidget(),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                final snackBar = SnackBar(
-                  content: Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFC72C41),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(16.0),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Text(
-                          "Oh, I'm sorry",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Some unexpected error occurred, possibly later',
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              },
-              style: ElevatedButton.styleFrom(
-                textStyle: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
-                backgroundColor: Colors.black,
-                shadowColor: Colors.transparent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(13),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 84,
-                  vertical: 9,
-                ),
-              ),
-              child: const Text(
-                'Sign In',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xFFFFFFFF),
-                ),
-              ),
-            ),
+            const _LoginButtonWidget(),
             SizedBox(height: MediaQuery.of(context).size.height * 0.11)
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LoginButtonWidget extends StatelessWidget {
+  const _LoginButtonWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.read<LoginViewModel>();
+    return ElevatedButton(
+      onPressed: () => model.signIn(),
+      style: ElevatedButton.styleFrom(
+        textStyle: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+        ),
+        backgroundColor: Colors.black,
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(13),
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 84,
+          vertical: 9,
+        ),
+      ),
+      child: const Text(
+        'Sign In',
+        style: TextStyle(
+          fontSize: 16.0,
+          fontWeight: FontWeight.w500,
+          color: Color(0xFFFFFFFF),
+        ),
+      ),
+    );
+  }
+}
+
+class _EmailTextFieldWidget extends StatelessWidget {
+  const _EmailTextFieldWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.read<LoginViewModel>();
+    return TextField(
+      controller: model.emailController,
+      autocorrect: false,
+      enableSuggestions: false,
+      textCapitalization: TextCapitalization.none,
+      textInputAction: TextInputAction.next,
+      keyboardType: TextInputType.emailAddress,
+      cursorRadius: const Radius.circular(4),
+      cursorColor: const Color(0xFFF98121),
+      style: const TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w400,
+        fontSize: 18,
+      ),
+      decoration: InputDecoration(
+        hintText: 'Email',
+        hintStyle: const TextStyle(
+          color: Color.fromRGBO(111, 119, 137, 1),
+          fontWeight: FontWeight.w400,
+          fontSize: 18,
+        ),
+        filled: true,
+        isDense: false,
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 10,
+        ),
+        fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide.none,
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide.none,
+        ),
+      ),
+    );
+  }
+}
+
+class _PasswordTextFieldWidget extends StatelessWidget {
+  const _PasswordTextFieldWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<LoginViewModel>();
+    return TextField(
+      controller: model.passwordController,
+      autocorrect: false,
+      enableSuggestions: false,
+      textCapitalization: TextCapitalization.none,
+      textInputAction: TextInputAction.next,
+      keyboardType: TextInputType.visiblePassword,
+      obscureText: model.isObscure,
+      cursorRadius: const Radius.circular(4),
+      cursorColor: const Color(0xFFF98121),
+      style: const TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w400,
+        fontSize: 18,
+      ),
+      decoration: InputDecoration(
+        hintText: 'Password',
+        hintStyle: const TextStyle(
+          color: Color.fromRGBO(111, 119, 137, 1),
+          fontWeight: FontWeight.w400,
+          fontSize: 18,
+        ),
+        filled: true,
+        isDense: false,
+        suffixIcon: IconButton(
+          iconSize: 20.0,
+          onPressed: model.visibility,
+          splashRadius: 18.0,
+          icon: Icon(
+            model.isObscure ? Icons.visibility_off : Icons.visibility,
+            color: const Color.fromRGBO(111, 119, 137, 1),
+          ),
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 10,
+        ),
+        fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide.none,
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide.none,
         ),
       ),
     );

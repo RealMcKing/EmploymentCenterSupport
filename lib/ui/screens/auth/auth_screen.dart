@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:ecs/domain/factory/screen_factory.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:ecs/domain/factory/screen_factory.dart';
 
 class AuthScreen extends StatelessWidget {
   static final _screenFactory = ScreenFactory();

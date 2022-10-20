@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "648508964785",
+    "project_id": "employmententersupport",
+    "storage_bucket": "employmententersupport.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648508964785:android:1a554e0a8311a934804790",
+        "android_client_info": {
+          "package_name": "com.burgerdonalds.ecs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648508964785-oft618b2d21a43brp3mc70bqkfjukpkc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.burgerdonalds.ecs",
+            "certificate_hash": "04f5542ca6df8d5a39438005ec40614129b387ff"
+          }
+        },
+        {
+          "client_id": "648508964785-f9vkdkfutf3cgggskbdfib5jds8snhhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9RSob3svIFdyNPwHjGgzLxbMEK9yJWlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648508964785-f9vkdkfutf3cgggskbdfib5jds8snhhi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
