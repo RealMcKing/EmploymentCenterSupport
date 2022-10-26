@@ -263,26 +263,28 @@ class _InformationExpansionTileWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                information['label'].toString(),
-                style: const TextStyle(
-                  color: Color(0xFF000000),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18.0,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  information['label'].toString(),
+                  style: const TextStyle(
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18.0,
+                  ),
                 ),
-              ),
-              Text(
-                information[type].toString(),
-                style: const TextStyle(
-                  color: Color(0xFF000000),
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14.0,
+                Text(
+                  information[type].toString(),
+                  style: const TextStyle(
+                    color: Color(0xFF000000),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.0,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           FloatingActionButton(
             backgroundColor: Colors.black,

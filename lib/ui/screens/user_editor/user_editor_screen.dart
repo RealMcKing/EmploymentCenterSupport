@@ -11,6 +11,18 @@ class UserEditorScreen extends StatelessWidget {
     final model = context.read<UserEditorViewModel>();
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
+      appBar: AppBar(
+        elevation: 0,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Color(0xFFFFFFFF),
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.dark,
+        ),
+        backgroundColor: const Color(0xFFFFFFFF),
+        iconTheme: const IconThemeData(
+          color: Color(0xFFF98121),
+        ),
+      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -123,7 +135,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
-              controller:  model.birthdayController,
+              controller: model.birthdayController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.none,

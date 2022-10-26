@@ -12,20 +12,22 @@ class AuthViewModel extends ChangeNotifier {
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
-    return await FirebaseAuth.instance.signInWithCredential(credential).then(
-          (value) => FirebaseFirestore.instance
-              .collection('users')
-              .doc(value.user?.uid)
-              .set(
-            <String, dynamic>{
-              "uid": value.user?.uid,
-              "first-name": "",
-              "last-name": "",
-              "phone-number": "",
-              "city": "",
-              "birthday": "",
-            },
-          ),
-        );
+    final UserCredential authResult =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    if (authResult.additionalUserInfo!.isNewUser) {
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(authResult.user?.uid)
+          .set(
+        <String, dynamic>{
+          "uid": authResult.user?.uid,
+          "first-name": "",
+          "last-name": "",
+          "phone-number": "",
+          "city": "",
+          "birthday": "",
+        },
+      );
+    }
   }
 }
