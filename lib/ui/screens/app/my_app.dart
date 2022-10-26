@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Poppins',
-        textSelectionTheme: TextSelectionThemeData(
-          selectionHandleColor: const Color(0xFFF98121).withOpacity(0.75),
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionHandleColor: Color(0xBFF98121),
         ),
         dividerColor: Colors.transparent,
       ),

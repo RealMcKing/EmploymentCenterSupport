@@ -1,6 +1,7 @@
-import 'package:ecs/ui/screens/sign_up/sign_up_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:ecs/ui/screens/sign_up/sign_up_model.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -140,9 +141,7 @@ class _PasswordTextFieldWidget extends StatelessWidget {
           onPressed: model.visibility,
           splashRadius: 18.0,
           icon: Icon(
-            model.isObscure
-                ? Icons.visibility_off
-                : Icons.visibility,
+            model.isObscure ? Icons.visibility_off : Icons.visibility,
             color: const Color.fromRGBO(111, 119, 137, 1),
           ),
         ),
@@ -173,9 +172,7 @@ class _PasswordTextFieldWidget extends StatelessWidget {
 }
 
 class _ConfirmationPasswordTextFieldWidget extends StatelessWidget {
-  const _ConfirmationPasswordTextFieldWidget({
-    Key? key,
-  }) : super(key: key);
+  const _ConfirmationPasswordTextFieldWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

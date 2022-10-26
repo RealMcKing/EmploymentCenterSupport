@@ -1,3 +1,4 @@
+import 'package:ecs/ui/screens/auth/auth_model.dart';
 import 'package:ecs/ui/screens/auth/auth_screen.dart';
 import 'package:ecs/ui/screens/information/information_screen.dart';
 import 'package:ecs/ui/screens/information_client/information_client_screen.dart';
@@ -5,15 +6,23 @@ import 'package:ecs/ui/screens/information_support/information_support_screen.da
 import 'package:ecs/ui/screens/login/login_model.dart';
 import 'package:ecs/ui/screens/login/login_screen.dart';
 import 'package:ecs/ui/screens/main/main_screen.dart';
+import 'package:ecs/ui/screens/reset_password/reset_password_model.dart';
+import 'package:ecs/ui/screens/reset_password/reset_password_screen.dart';
+import 'package:ecs/ui/screens/resume/resume_model.dart';
 import 'package:ecs/ui/screens/resume/resume_screen.dart';
+import 'package:ecs/ui/screens/resume_editor/resume_editor_model.dart';
 import 'package:ecs/ui/screens/resume_editor/resume_editor_screen.dart';
 import 'package:ecs/ui/screens/settings/settings_screen.dart';
 import 'package:ecs/ui/screens/sign_up/sign_up_model.dart';
 import 'package:ecs/ui/screens/sign_up/sign_up_screen.dart';
+import 'package:ecs/ui/screens/user/user_model.dart';
 import 'package:ecs/ui/screens/user/user_screen.dart';
+import 'package:ecs/ui/screens/user_editor/user_editor_model.dart';
+import 'package:ecs/ui/screens/vacation_details/vacation_details_model.dart';
 import 'package:ecs/ui/screens/vacation_details/vacation_details_screen.dart';
 import 'package:ecs/ui/screens/vacation_fit_back/vacation_fit_back.dart';
-import 'package:ecs/ui/screens/vacation_list/vacation_screen.dart';
+import 'package:ecs/ui/screens/vacation_list/vacation_list_model.dart';
+import 'package:ecs/ui/screens/vacation_list/vacation_list_screen.dart';
 import 'package:ecs/ui/screens/loader/loader_screen.dart';
 import 'package:ecs/ui/screens/user_editor/user_editor_screen.dart';
 
@@ -26,18 +35,28 @@ class ScreenFactory {
   }
 
   Widget makeAuth() {
-    return const AuthScreen();
+    return ChangeNotifierProvider(
+      create: (_) => AuthViewModel(),
+      child: const AuthScreen(),
+    );
   }
 
   Widget makeLogin() {
-    return  ChangeNotifierProvider(
+    return ChangeNotifierProvider(
       create: (_) => LoginViewModel(),
       child: const LoginScreen(),
     );
   }
 
+  Widget makeResetPassword() {
+    return ChangeNotifierProvider(
+      create: (_) => ResetPasswordViewModel(),
+      child: const ResetPasswordScreen(),
+    );
+  }
+
   Widget makeSignUp() {
-    return  ChangeNotifierProvider(
+    return ChangeNotifierProvider(
       create: (_) => SignUpViewModel(),
       child: const SignUpScreen(),
     );
@@ -52,11 +71,17 @@ class ScreenFactory {
   }
 
   Widget makeVacationList() {
-    return const VacationListScreen();
+    return ChangeNotifierProvider(
+      create: (_) => VacationListViewModel(),
+      child: const VacationListScreen(),
+    );
   }
 
-  Widget makeVacationDetails() {
-    return const VacationDetailsScreen();
+  Widget makeVacationDetails(String workId) {
+    return ChangeNotifierProvider(
+      create: (_) => VacationDetailsViewModel(workId: workId),
+      child: const VacationDetailsScreen(),
+    );
   }
 
   Widget makeVacationFitBack() {
@@ -76,18 +101,30 @@ class ScreenFactory {
   }
 
   Widget makeResume() {
-    return const ResumeScreen();
+    return ChangeNotifierProvider(
+      create: (_) => ResumeViewModel(),
+      child: const ResumeScreen(),
+    );
   }
 
-  Widget makeResumeEditor() {
-    return const ResumeEditorScreen();
+  Widget makeResumeEditor(String resumeId) {
+    return ChangeNotifierProvider(
+      create: (_) => ResumeEditorViewModel(resumeId: resumeId),
+      child: const ResumeEditorScreen(),
+    );
   }
 
   Widget makeUser() {
-    return const UserScreen();
+    return ChangeNotifierProvider(
+      create: (_) => UserViewModel(),
+      child: const UserScreen(),
+    );
   }
 
   Widget makeUserEditor() {
-    return const UserEditorScreen();
+    return ChangeNotifierProvider(
+      create: (_) => UserEditorViewModel(),
+      child: const UserEditorScreen(),
+    );
   }
 }

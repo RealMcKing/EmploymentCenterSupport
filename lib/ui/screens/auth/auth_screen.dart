@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
+import 'package:ecs/ui/screens/auth/auth_model.dart';
 import 'package:ecs/domain/factory/screen_factory.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -11,6 +13,7 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.read<AuthViewModel>();
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -113,49 +116,7 @@ class AuthScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 16.0),
                           ElevatedButton.icon(
-                            onPressed: () {
-                              final snackBar = SnackBar(
-                                content: Container(
-                                  padding: const EdgeInsets.all(16.0),
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFF4E8D7C),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(16.0),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: const [
-                                      Text(
-                                        "Excellent",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      SizedBox(height: 8),
-                                      Text(
-                                        'You were able to log in with the help of Tim Cook',
-                                        maxLines: 2,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                behavior: SnackBarBehavior.floating,
-                                backgroundColor: Colors.transparent,
-                                elevation: 0,
-                              );
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
-                            },
+                            onPressed: model.signInWithGoogle,
                             style: ElevatedButton.styleFrom(
                               textStyle: const TextStyle(
                                 fontSize: 18,

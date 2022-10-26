@@ -1,3 +1,4 @@
+import 'package:ecs/domain/factory/screen_factory.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,8 @@ import 'package:ecs/ui/screens/auth/auth_screen.dart';
 import 'package:ecs/ui/screens/main/main_screen.dart';
 
 class LoaderScreen extends StatelessWidget {
+  static final _screenFactory = ScreenFactory();
+
   const LoaderScreen({Key? key}) : super(key: key);
 
   @override
@@ -14,9 +17,9 @@ class LoaderScreen extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const MainScreen();
+            return _screenFactory.makeMain();
           } else {
-            return const AuthScreen();
+            return _screenFactory.makeAuth();
           }
         },
       ),

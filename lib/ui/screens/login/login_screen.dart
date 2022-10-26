@@ -40,6 +40,8 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 16.0),
             const _PasswordTextFieldWidget(),
             const SizedBox(height: 16.0),
+            const _ResetPasswordButtonWidget(),
+            const SizedBox(height: 16.0),
             const _LoginButtonWidget(),
             SizedBox(height: MediaQuery.of(context).size.height * 0.11)
           ],
@@ -49,16 +51,37 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
+class _ResetPasswordButtonWidget extends StatelessWidget {
+  const _ResetPasswordButtonWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final model = context.read<LoginViewModel>();
+    return Align(
+      alignment: Alignment.centerRight,
+      child: TextButton(
+        onPressed: () => model.resetPassword(context),
+        child: const Text(
+          'Reset password',
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Color(0xFFF98121),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _LoginButtonWidget extends StatelessWidget {
-  const _LoginButtonWidget({
-    Key? key,
-  }) : super(key: key);
+  const _LoginButtonWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final model = context.read<LoginViewModel>();
     return ElevatedButton(
-      onPressed: () => model.signIn(),
+      onPressed: model.signIn,
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
           fontSize: 18,

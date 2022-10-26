@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecs/ui/screens/vacation_list/vacation_list_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class VacationListScreen extends StatelessWidget {
   const VacationListScreen({Key? key}) : super(key: key);
@@ -72,31 +75,50 @@ class VacationListScreen extends StatelessWidget {
           )
         ],
       ),
-      body: ListView.separated(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-          ),
-          itemBuilder: (BuildContext context, int index) {
-            return const _JobBlockWidget();
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(height: 8.0);
-          },
-          itemCount: 100),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: FirebaseFirestore.instance.collection('works').snapshots(),
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.data == null) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            final List<QueryDocumentSnapshot<Map<String, dynamic>>> docs =
+                snapshot.data!.docs;
+            return ListView.separated(
+              padding: const EdgeInsets.all(8.0),
+              physics: const BouncingScrollPhysics(),
+              itemCount: docs.length,
+              itemBuilder: (_, index) {
+                final doc = docs[index];
+                return _JobBlockWidget(work: doc);
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(height: 8.0);
+              },
+            );
+          }
+        },
+      ),
     );
   }
 }
 
 class _JobBlockWidget extends StatelessWidget {
-  const _JobBlockWidget({
-    Key? key,
-  }) : super(key: key);
+  final QueryDocumentSnapshot<Map<String, dynamic>> work;
+
+  const _JobBlockWidget({Key? key, required this.work}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final name = work["name"] as String;
+    final tags = work['tags'] as List<dynamic>;
+    final company = work['company'] as String;
+    final date = work['date'] as String;
+    final model = context.read<VacationListViewModel>();
+
     return InkWell(
-      onTap: () {},
+      onTap: () => model.openDetailVacation(context, work.id),
       borderRadius: BorderRadius.circular(10),
       child: Container(
         clipBehavior: Clip.hardEdge,
@@ -108,9 +130,9 @@ class _JobBlockWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'US jobs growth disappoints as recovery falters',
-              style: TextStyle(
+            Text(
+              name,
+              style: const TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
@@ -119,25 +141,27 @@ class _JobBlockWidget extends StatelessWidget {
               maxLines: 1,
             ),
             const SizedBox(height: 4),
-            const _JobBlockTagsListWidget(),
+            tags.isNotEmpty
+                ? _JobBlockTagsListWidget(tags: tags)
+                : const SizedBox.shrink(),
             const SizedBox(height: 4),
             Row(
               children: [
                 RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Nature Channel',
-                        style: TextStyle(
+                        text: company,
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
                           color: Color.fromRGBO(249, 129, 33, 1),
                         ),
                       ),
-                      TextSpan(text: ' '),
+                      const TextSpan(text: ' '),
                       TextSpan(
-                        text: '4 min ago',
-                        style: TextStyle(
+                        text: date,
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
                           color: Color.fromRGBO(196, 196, 196, 1),
@@ -156,8 +180,11 @@ class _JobBlockWidget extends StatelessWidget {
 }
 
 class _JobBlockTagsListWidget extends StatelessWidget {
+  final List<dynamic> tags;
+
   const _JobBlockTagsListWidget({
     Key? key,
+    required this.tags,
   }) : super(key: key);
 
   @override
@@ -169,12 +196,12 @@ class _JobBlockTagsListWidget extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          return const _JobBlockTagWidget();
+          return _JobBlockTagWidget(tag: tags[index] as String);
         },
         separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(width: 8.0);
         },
-        itemCount: 7,
+        itemCount: tags.length,
         padding: const EdgeInsets.all(4.0),
       ),
     );
@@ -182,8 +209,11 @@ class _JobBlockTagsListWidget extends StatelessWidget {
 }
 
 class _JobBlockTagWidget extends StatelessWidget {
+  final String tag;
+
   const _JobBlockTagWidget({
     Key? key,
+    required this.tag,
   }) : super(key: key);
 
   @override
@@ -196,9 +226,9 @@ class _JobBlockTagWidget extends StatelessWidget {
         color: const Color.fromRGBO(242, 242, 242, 0.48),
         borderRadius: BorderRadius.circular(4),
       ),
-      child: const Text(
-        'Flutter',
-        style: TextStyle(
+      child: Text(
+        tag,
+        style: const TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 12,
           color: Color(0xFF6F7789),

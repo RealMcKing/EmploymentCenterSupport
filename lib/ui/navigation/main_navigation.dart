@@ -4,7 +4,8 @@ import 'package:ecs/domain/factory/screen_factory.dart';
 
 abstract class MainNavigationRouteNames {
   static const loaderScreen = '/';
-  static const authScreen = 'auth';
+  static const authScreen = '/auth';
+  static const resetPasswordScreen = '/auth/reset';
   static const mainScreen = '/main';
   static const settingScreen = '/main/settings';
   static const vacationDetailsScreen = '/main/vacation_list/vacation_details';
@@ -24,22 +25,32 @@ class MainNavigation {
     MainNavigationRouteNames.mainScreen: (_) => _screenFactory.makeMain(),
     MainNavigationRouteNames.settingScreen: (_) =>
         _screenFactory.makeSettings(),
-    MainNavigationRouteNames.vacationDetailsScreen: (_) =>
-        _screenFactory.makeVacationDetails(),
     MainNavigationRouteNames.vacationFitBackScreen: (_) =>
         _screenFactory.makeVacationFitBack(),
     MainNavigationRouteNames.informationClientScreen: (_) =>
         _screenFactory.makeInformationClient(),
     MainNavigationRouteNames.informationSupportScreen: (_) =>
         _screenFactory.makeInformationSupport(),
-    MainNavigationRouteNames.resumeEditorScreen: (_) =>
-        _screenFactory.makeResumeEditor(),
     MainNavigationRouteNames.userEditorScreen: (_) =>
         _screenFactory.makeUserEditor(),
+    MainNavigationRouteNames.resetPasswordScreen: (_) =>
+        _screenFactory.makeResetPassword(),
   };
 
   Route<Object> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case MainNavigationRouteNames.vacationDetailsScreen:
+        final arguments = settings.arguments;
+        final workId = arguments is String ? arguments : '';
+        return MaterialPageRoute(
+          builder: (_) => _screenFactory.makeVacationDetails(workId),
+        );
+      case MainNavigationRouteNames.resumeEditorScreen:
+        final arguments = settings.arguments;
+        final resumeId = arguments is String ? arguments : '';
+        return MaterialPageRoute(
+          builder: (_) => _screenFactory.makeResumeEditor(resumeId),
+        );
       default:
         const widget = Text("Navigation Error");
         return MaterialPageRoute(builder: (_) => widget);

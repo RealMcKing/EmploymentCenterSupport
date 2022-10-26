@@ -1,11 +1,14 @@
+import 'package:ecs/ui/screens/resume_editor/resume_editor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class ResumeEditorScreen extends StatelessWidget {
   const ResumeEditorScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final model = context.read<ResumeEditorViewModel>();
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: CustomScrollView(
@@ -64,57 +67,11 @@ class ResumeEditorScreen extends StatelessWidget {
                             child: Column(
                               children: [
                                 TextField(
-                                  autocorrect: false,
-                                  enableSuggestions: false,
-                                  textCapitalization: TextCapitalization.words,
-                                  textInputAction: TextInputAction.next,
-                                  keyboardType: TextInputType.name,
-                                  cursorRadius: const Radius.circular(4),
-                                  cursorColor: const Color(0xFFF98121),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText: 'Name',
-                                    hintStyle: const TextStyle(
-                                      color: Color.fromRGBO(111, 119, 137, 1),
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                    ),
-                                    filled: true,
-                                    isDense: false,
-                                    contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 10,
-                                      horizontal: 10,
-                                    ),
-                                    fillColor: const Color.fromRGBO(
-                                        242, 242, 242, 0.48),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6),
-                                      borderSide: BorderSide.none,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                TextField(
+                                  controller: model.vacancyController,
                                   autocorrect: false,
                                   enableSuggestions: false,
                                   textCapitalization:
-                                      TextCapitalization.sentences,
+                                  TextCapitalization.sentences,
                                   textInputAction: TextInputAction.next,
                                   keyboardType: TextInputType.text,
                                   cursorRadius: const Radius.circular(4),
@@ -157,6 +114,54 @@ class ResumeEditorScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                                const SizedBox(height: 8),
+                                TextField(
+                                  controller: model.universityController,
+                                  autocorrect: false,
+                                  enableSuggestions: false,
+                                  textCapitalization: TextCapitalization.sentences,
+                                  textInputAction: TextInputAction.next,
+                                  keyboardType: TextInputType.name,
+                                  cursorRadius: const Radius.circular(4),
+                                  cursorColor: const Color(0xFFF98121),
+                                  maxLines: 1,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 18,
+                                  ),
+                                  decoration: InputDecoration(
+                                    hintText: 'University',
+                                    hintStyle: const TextStyle(
+                                      color: Color.fromRGBO(111, 119, 137, 1),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                    ),
+                                    filled: true,
+                                    isDense: false,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 10,
+                                      horizontal: 10,
+                                    ),
+                                    fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -164,100 +169,7 @@ class ResumeEditorScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       TextField(
-                        autocorrect: false,
-                        enableSuggestions: false,
-                        textCapitalization: TextCapitalization.none,
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.datetime,
-                        cursorRadius: const Radius.circular(4),
-                        cursorColor: const Color(0xFFF98121),
-                        maxLines: 1,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                        ),
-                        decoration: InputDecoration(
-                          hintText: 'Birthday',
-                          hintStyle: const TextStyle(
-                            color: Color.fromRGBO(111, 119, 137, 1),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
-                          ),
-                          filled: true,
-                          isDense: false,
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 10,
-                          ),
-                          fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            borderSide: BorderSide.none,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      TextField(
-                        autocorrect: false,
-                        enableSuggestions: false,
-                        textCapitalization: TextCapitalization.none,
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.phone,
-                        cursorRadius: const Radius.circular(4),
-                        cursorColor: const Color(0xFFF98121),
-                        maxLines: 1,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                        ),
-                        decoration: InputDecoration(
-                          hintText: 'Phone Number',
-                          hintStyle: const TextStyle(
-                            color: Color.fromRGBO(111, 119, 137, 1),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
-                          ),
-                          filled: true,
-                          isDense: false,
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 10,
-                          ),
-                          fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            borderSide: BorderSide.none,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      TextField(
+                        controller: model.specialtyController,
                         autocorrect: false,
                         enableSuggestions: false,
                         textCapitalization: TextCapitalization.sentences,
@@ -272,7 +184,159 @@ class ResumeEditorScreen extends StatelessWidget {
                           fontSize: 18,
                         ),
                         decoration: InputDecoration(
-                          hintText: 'City',
+                          hintText: 'Specialty',
+                          hintStyle: const TextStyle(
+                            color: Color.fromRGBO(111, 119, 137, 1),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                          ),
+                          filled: true,
+                          isDense: false,
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 10,
+                          ),
+                          fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: model.specialtyDateStartController,
+                              autocorrect: false,
+                              enableSuggestions: false,
+                              textCapitalization: TextCapitalization.sentences,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.name,
+                              cursorRadius: const Radius.circular(4),
+                              cursorColor: const Color(0xFFF98121),
+                              maxLines: 1,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                              ),
+                              decoration: InputDecoration(
+                                hintText: 'Date start',
+                                hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(111, 119, 137, 1),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18,
+                                ),
+                                filled: true,
+                                isDense: false,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                  horizontal: 10,
+                                ),
+                                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: TextField(
+                              controller: model.specialtyDateEndController,
+                              autocorrect: false,
+                              enableSuggestions: false,
+                              textCapitalization: TextCapitalization.sentences,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.name,
+                              cursorRadius: const Radius.circular(4),
+                              cursorColor: const Color(0xFFF98121),
+                              maxLines: 1,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                              ),
+                              decoration: InputDecoration(
+                                hintText: 'Date end',
+                                hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(111, 119, 137, 1),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18,
+                                ),
+                                filled: true,
+                                isDense: false,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                  horizontal: 10,
+                                ),
+                                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: model.lastJobController,
+                        autocorrect: false,
+                        enableSuggestions: false,
+                        textCapitalization: TextCapitalization.sentences,
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.name,
+                        cursorRadius: const Radius.circular(4),
+                        cursorColor: const Color(0xFFF98121),
+                        maxLines: 1,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: 'Last job',
                           hintStyle: const TextStyle(
                             color: Color.fromRGBO(111, 119, 137, 1),
                             fontWeight: FontWeight.w400,
@@ -305,6 +369,159 @@ class ResumeEditorScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       TextField(
+                        controller: model.positionController,
+                        autocorrect: false,
+                        enableSuggestions: false,
+                        textCapitalization: TextCapitalization.sentences,
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.name,
+                        cursorRadius: const Radius.circular(4),
+                        cursorColor: const Color(0xFFF98121),
+                        maxLines: 1,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: 'Position',
+                          hintStyle: const TextStyle(
+                            color: Color.fromRGBO(111, 119, 137, 1),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                          ),
+                          filled: true,
+                          isDense: false,
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 10,
+                          ),
+                          fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: model.jobDateStartController,
+                              autocorrect: false,
+                              enableSuggestions: false,
+                              textCapitalization: TextCapitalization.sentences,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.name,
+                              cursorRadius: const Radius.circular(4),
+                              cursorColor: const Color(0xFFF98121),
+                              maxLines: 1,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                              ),
+                              decoration: InputDecoration(
+                                hintText: 'Date start',
+                                hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(111, 119, 137, 1),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18,
+                                ),
+                                filled: true,
+                                isDense: false,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                  horizontal: 10,
+                                ),
+                                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: TextField(
+                              controller: model.jobDateEndController,
+                              autocorrect: false,
+                              enableSuggestions: false,
+                              textCapitalization: TextCapitalization.sentences,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.name,
+                              cursorRadius: const Radius.circular(4),
+                              cursorColor: const Color(0xFFF98121),
+                              maxLines: 1,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                              ),
+                              decoration: InputDecoration(
+                                hintText: 'Date end',
+                                hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(111, 119, 137, 1),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18,
+                                ),
+                                filled: true,
+                                isDense: false,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                  horizontal: 10,
+                                ),
+                                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: model.aboutMeController,
                         autocorrect: false,
                         enableSuggestions: false,
                         textCapitalization: TextCapitalization.none,
@@ -360,7 +577,7 @@ class ResumeEditorScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () => model.save(context),
         label: Column(
           children: const [
             Text(

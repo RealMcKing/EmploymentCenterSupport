@@ -1,11 +1,14 @@
+import 'package:ecs/ui/screens/user_editor/user_editor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class UserEditorScreen extends StatelessWidget {
   const UserEditorScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final model = context.read<UserEditorViewModel>();
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: SingleChildScrollView(
@@ -26,6 +29,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32.0),
             TextFormField(
+              controller: model.firstNameController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.words,
@@ -72,6 +76,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              controller: model.lastNameController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.words,
@@ -118,6 +123,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              controller:  model.birthdayController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.none,
@@ -164,6 +170,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              controller: model.phoneNumberController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.none,
@@ -213,6 +220,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
+              controller: model.cityController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.words,
@@ -259,7 +267,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => model.saveInformation(context),
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                   fontSize: 18,
