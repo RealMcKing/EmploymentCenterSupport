@@ -1,10 +1,13 @@
+import 'package:ecs/ui/screens/information/information_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class InformationScreen extends StatelessWidget {
   const InformationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final model = context.read<InformationViewModel>();
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: Column(
@@ -13,7 +16,7 @@ class InformationScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                onTap: () {},
+                onTap: () => model.openClientEC(context),
                 splashColor: const Color(0xFFF98121).withOpacity(0.06),
                 borderRadius: BorderRadius.circular(12.0),
                 child: Container(
@@ -30,7 +33,7 @@ class InformationScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Text(
-                          'For categories of clients of the Employment Center',
+                          'Для категорій клієнтів центру зайнятості',
                           style: TextStyle(
                             fontSize: 36.0,
                             height: 1.2,
@@ -43,10 +46,10 @@ class InformationScreen extends StatelessWidget {
                           spacing: 8.0,
                           runSpacing: 8.0,
                           children: const [
-                            _TagChipWidget(label: 'For entrepreneurs'),
-                            _TagChipWidget(label: 'For unemployed'),
-                            _TagChipWidget(label: 'For invalids'),
-                            _TagChipWidget(label: 'For combatants'),
+                            _TagChipWidget(label: 'Для підприємців'),
+                            _TagChipWidget(label: 'Для безробітних'),
+                            _TagChipWidget(label: 'Для інвалідів'),
+                            _TagChipWidget(label: 'Для учасників бойових дій'),
                           ],
                         ),
                       ],
@@ -60,7 +63,7 @@ class InformationScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                onTap: () {},
+                onTap: () => model.openAdditionalInformation(context),
                 splashColor: const Color(0xFFF98121).withOpacity(0.06),
                 borderRadius: BorderRadius.circular(12.0),
                 child: Container(
@@ -77,7 +80,7 @@ class InformationScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Text(
-                          'Additional Information',
+                          'Додаткова інформація',
                           style: TextStyle(
                             fontSize: 36.0,
                             height: 1.2,
@@ -91,12 +94,11 @@ class InformationScreen extends StatelessWidget {
                           runSpacing: 8.0,
                           children: const [
                             _TagChipWidget(
-                                label:
-                                    'Registration at the Employment Center'),
+                                label: 'Реєстрація в центрі зайнятості'),
                             _TagChipWidget(
-                                label: 'Emails of Employment Center'),
-                            _TagChipWidget(label: 'Useful links'),
-                            _TagChipWidget(label: 'Hotlines'),
+                                label: 'Електроннi пошти центру зайнятості'),
+                            _TagChipWidget(label: 'Корисні посилання'),
+                            _TagChipWidget(label: 'Гарячі лінії'),
                           ],
                         ),
                       ],

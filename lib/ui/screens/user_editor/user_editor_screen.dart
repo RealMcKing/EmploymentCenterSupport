@@ -20,7 +20,7 @@ class UserEditorScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             const Text(
-              'What do you want to change?',
+              'Що ти хочеш змінити?',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 64,
@@ -43,7 +43,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'First name',
+                hintText: "Ім'я",
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -90,7 +90,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'Last name',
+                hintText: 'Прізвище',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -137,7 +137,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'Birthday',
+                hintText: 'День народження',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -187,7 +187,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'Phone Number',
+                hintText: 'Телефонний номер',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -234,7 +234,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'City',
+                hintText: 'Місто',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -284,7 +284,7 @@ class UserEditorScreen extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                'Save',
+                'Зберегти',
               ),
             ),
           ],

@@ -45,8 +45,8 @@ class AuthScreen extends StatelessWidget {
                     TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 isScrollable: true,
                 tabs: [
-                  Tab(child: Text('Login')),
-                  Tab(child: Text('Sign Up')),
+                  Tab(child: Text('Вхiд')),
+                  Tab(child: Text('Реєструватися')),
                 ],
               )
             ],
@@ -75,7 +75,7 @@ class AuthScreen extends StatelessWidget {
                         spreadRadius: 5,
                         blurRadius: 15,
                         offset:
-                            const Offset(0, 5), // changes position of shadow
+                            const Offset(0, 5),
                       ),
                     ],
                     color: Colors.white,
@@ -108,7 +108,7 @@ class AuthScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 16.0),
                           const Text(
-                            'Other authorization options',
+                            'Інші варіанти авторизації',
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
@@ -138,7 +138,7 @@ class AuthScreen extends StatelessWidget {
                               width: 20.0,
                             ),
                             label: const Text(
-                              'Sign In',
+                              'Вхiд',
                             ),
                           ),
                         ],

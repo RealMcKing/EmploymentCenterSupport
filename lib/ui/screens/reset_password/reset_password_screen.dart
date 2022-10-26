@@ -21,7 +21,7 @@ class ResetPasswordScreen extends StatelessWidget {
             children: const [
               SizedBox(height: 16.0),
               Text(
-                'Forgot your password?',
+                'Забули свій пароль?',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 64,
@@ -30,7 +30,7 @@ class ResetPasswordScreen extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               Text(
-                'Enter Your Email to Reset Password',
+                'Введіть свою електронну адресу, щоб скинути пароль',
                 style: TextStyle(
                   color: Color(0xBF000000),
                   fontSize: 32,
@@ -70,7 +70,7 @@ class _EmailTextFieldWidget extends StatelessWidget {
         fontSize: 18,
       ),
       decoration: InputDecoration(
-        hintText: 'Email',
+        hintText: 'Електронна пошта',
         hintStyle: const TextStyle(
           color: Color.fromRGBO(111, 119, 137, 1),
           fontWeight: FontWeight.w400,
@@ -128,7 +128,7 @@ class _ResetPasswordButtonWidget extends StatelessWidget {
         ),
       ),
       child: const Text(
-        'Reset password',
+        'Скинути пароль',
         style: TextStyle(
           fontSize: 16.0,
           fontWeight: FontWeight.w500,

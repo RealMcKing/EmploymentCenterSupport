@@ -23,8 +23,6 @@ class MainNavigation {
     MainNavigationRouteNames.loaderScreen: (_) => _screenFactory.makeLoader(),
     MainNavigationRouteNames.authScreen: (_) => _screenFactory.makeAuth(),
     MainNavigationRouteNames.mainScreen: (_) => _screenFactory.makeMain(),
-    MainNavigationRouteNames.settingScreen: (_) =>
-        _screenFactory.makeSettings(),
     MainNavigationRouteNames.vacationFitBackScreen: (_) =>
         _screenFactory.makeVacationFitBack(),
     MainNavigationRouteNames.informationClientScreen: (_) =>

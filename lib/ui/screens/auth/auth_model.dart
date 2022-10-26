@@ -1,23 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthViewModel extends ChangeNotifier {
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
+  Future<void> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
-
-    // Create a new credential
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    return await FirebaseAuth.instance.signInWithCredential(credential).then(
+          (value) => FirebaseFirestore.instance
+              .collection('users')
+              .doc(value.user?.uid)
+              .set(
+            <String, dynamic>{
+              "uid": value.user?.uid,
+              "first-name": "",
+              "last-name": "",
+              "phone-number": "",
+              "city": "",
+              "birthday": "",
+            },
+          ),
+        );
   }
 }

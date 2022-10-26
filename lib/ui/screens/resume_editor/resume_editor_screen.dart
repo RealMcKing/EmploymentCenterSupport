@@ -27,7 +27,7 @@ class ResumeEditorScreen extends StatelessWidget {
               color: Color(0xFFF98121),
             ),
             title: const Text(
-              'Resume Editor',
+              'Редактор резюме',
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: TextStyle(
@@ -82,7 +82,7 @@ class ResumeEditorScreen extends StatelessWidget {
                                     fontSize: 18,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'Vacancy',
+                                    hintText: 'Вакансія',
                                     hintStyle: const TextStyle(
                                       color: Color.fromRGBO(111, 119, 137, 1),
                                       fontWeight: FontWeight.w400,
@@ -131,7 +131,7 @@ class ResumeEditorScreen extends StatelessWidget {
                                     fontSize: 18,
                                   ),
                                   decoration: InputDecoration(
-                                    hintText: 'University',
+                                    hintText: 'Університет',
                                     hintStyle: const TextStyle(
                                       color: Color.fromRGBO(111, 119, 137, 1),
                                       fontWeight: FontWeight.w400,
@@ -184,7 +184,7 @@ class ResumeEditorScreen extends StatelessWidget {
                           fontSize: 18,
                         ),
                         decoration: InputDecoration(
-                          hintText: 'Specialty',
+                          hintText: 'Спеціальність',
                           hintStyle: const TextStyle(
                             color: Color.fromRGBO(111, 119, 137, 1),
                             fontWeight: FontWeight.w400,
@@ -235,7 +235,7 @@ class ResumeEditorScreen extends StatelessWidget {
                                 fontSize: 18,
                               ),
                               decoration: InputDecoration(
-                                hintText: 'Date start',
+                                hintText: 'Дата початку навчання',
                                 hintStyle: const TextStyle(
                                   color: Color.fromRGBO(111, 119, 137, 1),
                                   fontWeight: FontWeight.w400,
@@ -285,7 +285,7 @@ class ResumeEditorScreen extends StatelessWidget {
                                 fontSize: 18,
                               ),
                               decoration: InputDecoration(
-                                hintText: 'Date end',
+                                hintText: 'Дата закінчення навчання',
                                 hintStyle: const TextStyle(
                                   color: Color.fromRGBO(111, 119, 137, 1),
                                   fontWeight: FontWeight.w400,
@@ -336,7 +336,7 @@ class ResumeEditorScreen extends StatelessWidget {
                           fontSize: 18,
                         ),
                         decoration: InputDecoration(
-                          hintText: 'Last job',
+                          hintText: 'Остання робота',
                           hintStyle: const TextStyle(
                             color: Color.fromRGBO(111, 119, 137, 1),
                             fontWeight: FontWeight.w400,
@@ -384,7 +384,7 @@ class ResumeEditorScreen extends StatelessWidget {
                           fontSize: 18,
                         ),
                         decoration: InputDecoration(
-                          hintText: 'Position',
+                          hintText: 'Посада',
                           hintStyle: const TextStyle(
                             color: Color.fromRGBO(111, 119, 137, 1),
                             fontWeight: FontWeight.w400,
@@ -435,7 +435,7 @@ class ResumeEditorScreen extends StatelessWidget {
                                 fontSize: 18,
                               ),
                               decoration: InputDecoration(
-                                hintText: 'Date start',
+                                hintText: 'Початок роботи',
                                 hintStyle: const TextStyle(
                                   color: Color.fromRGBO(111, 119, 137, 1),
                                   fontWeight: FontWeight.w400,
@@ -485,7 +485,7 @@ class ResumeEditorScreen extends StatelessWidget {
                                 fontSize: 18,
                               ),
                               decoration: InputDecoration(
-                                hintText: 'Date end',
+                                hintText: 'Кінець роботи',
                                 hintStyle: const TextStyle(
                                   color: Color.fromRGBO(111, 119, 137, 1),
                                   fontWeight: FontWeight.w400,
@@ -537,7 +537,7 @@ class ResumeEditorScreen extends StatelessWidget {
                           fontSize: 18,
                         ),
                         decoration: InputDecoration(
-                          hintText: 'About Me',
+                          hintText: 'Про мене',
                           hintStyle: const TextStyle(
                             color: Color.fromRGBO(111, 119, 137, 1),
                             fontWeight: FontWeight.w400,
@@ -581,7 +581,7 @@ class ResumeEditorScreen extends StatelessWidget {
         label: Column(
           children: const [
             Text(
-              'Save',
+              'Зберегти',
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontWeight: FontWeight.w400,
@@ -589,7 +589,7 @@ class ResumeEditorScreen extends StatelessWidget {
               ),
             ),
             Text(
-              'And exit',
+              'Та вихід',
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontWeight: FontWeight.w300,

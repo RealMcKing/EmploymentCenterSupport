@@ -28,7 +28,7 @@ class VacationListScreen extends StatelessWidget {
             fontSize: 18,
           ),
           decoration: InputDecoration(
-            hintText: 'What your find?',
+            hintText: 'Що ви шукайте?',
             hintStyle: const TextStyle(
               color: Color.fromRGBO(111, 119, 137, 1),
               fontWeight: FontWeight.w400,

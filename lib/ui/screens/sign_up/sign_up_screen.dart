@@ -19,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             const Text(
-              'Well met, Dear friend',
+              'Ласкаво просимо',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 64,
@@ -28,7 +28,7 @@ class SignUpScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             Text(
-              'Please fill out the all forms',
+              'Будь ласка, заповніть усі форми',
               style: TextStyle(
                 color: Colors.black.withOpacity(0.75),
                 fontSize: 32,
@@ -72,7 +72,7 @@ class _EmailTextFieldWidget extends StatelessWidget {
         fontSize: 18,
       ),
       decoration: InputDecoration(
-        hintText: 'Email',
+        hintText: 'Електронна пошта',
         hintStyle: const TextStyle(
           color: Color.fromRGBO(111, 119, 137, 1),
           fontWeight: FontWeight.w400,
@@ -128,7 +128,7 @@ class _PasswordTextFieldWidget extends StatelessWidget {
         fontSize: 18,
       ),
       decoration: InputDecoration(
-        hintText: 'Password',
+        hintText: 'Пароль',
         hintStyle: const TextStyle(
           color: Color.fromRGBO(111, 119, 137, 1),
           fontWeight: FontWeight.w400,
@@ -193,7 +193,7 @@ class _ConfirmationPasswordTextFieldWidget extends StatelessWidget {
         fontSize: 18,
       ),
       decoration: InputDecoration(
-        hintText: 'Repeat Password',
+        hintText: 'Повторіть пароль',
         hintStyle: const TextStyle(
           color: Color.fromRGBO(111, 119, 137, 1),
           fontWeight: FontWeight.w400,
@@ -262,7 +262,7 @@ class _SignUpButtonWidget extends StatelessWidget {
         ),
       ),
       child: const Text(
-        'Sign Up',
+        'Зареєструватися',
         style: TextStyle(
           fontSize: 16.0,
           fontWeight: FontWeight.w500,

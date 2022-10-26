@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             const Text(
-              'Welcome Back!',
+              'З поверненням!',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 64,
@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             Text(
-              'Enter Your Email & Password',
+              'Введіть адресу електронної пошти та пароль',
               style: TextStyle(
                 color: Colors.black.withOpacity(0.75),
                 fontSize: 32,
@@ -62,7 +62,7 @@ class _ResetPasswordButtonWidget extends StatelessWidget {
       child: TextButton(
         onPressed: () => model.resetPassword(context),
         child: const Text(
-          'Reset password',
+          'Скинути пароль',
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
@@ -98,7 +98,7 @@ class _LoginButtonWidget extends StatelessWidget {
         ),
       ),
       child: const Text(
-        'Sign In',
+        'Увійти',
         style: TextStyle(
           fontSize: 16.0,
           fontWeight: FontWeight.w500,
@@ -132,7 +132,7 @@ class _EmailTextFieldWidget extends StatelessWidget {
         fontSize: 18,
       ),
       decoration: InputDecoration(
-        hintText: 'Email',
+        hintText: 'Електронна пошта',
         hintStyle: const TextStyle(
           color: Color.fromRGBO(111, 119, 137, 1),
           fontWeight: FontWeight.w400,
@@ -190,7 +190,7 @@ class _PasswordTextFieldWidget extends StatelessWidget {
         fontSize: 18,
       ),
       decoration: InputDecoration(
-        hintText: 'Password',
+        hintText: 'Пароль',
         hintStyle: const TextStyle(
           color: Color.fromRGBO(111, 119, 137, 1),
           fontWeight: FontWeight.w400,

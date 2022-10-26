@@ -18,25 +18,13 @@ class UserScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFFFFFFF),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: model.signOut,
-        label: Column(
-          children: const [
-            Text(
-              'Exit',
-              style: TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontWeight: FontWeight.w400,
-                fontSize: 14.0,
-              ),
-            ),
-            Text(
-              'Be the first',
-              style: TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontWeight: FontWeight.w300,
-                fontSize: 11.0,
-              ),
-            ),
-          ],
+        label: const Text(
+          'Вихід',
+          style: TextStyle(
+            color: Color(0xFFFFFFFF),
+            fontWeight: FontWeight.w400,
+            fontSize: 14.0,
+          ),
         ),
         icon: const Icon(
           Icons.exit_to_app,
@@ -61,7 +49,7 @@ class UserScreen extends StatelessWidget {
         ),
         backgroundColor: const Color(0xFFFFFFFF),
         title: const Text(
-          "User",
+          "Користувач",
           style: TextStyle(
             color: Color(0xFF000000),
           ),
@@ -215,7 +203,7 @@ class _ResetPasswordButtonWidget extends StatelessWidget {
         ),
       ),
       child: const Text(
-        'Reset Password',
+        'Скинути пароль',
         style: TextStyle(
           fontSize: 16.0,
           fontWeight: FontWeight.w500,
@@ -251,7 +239,7 @@ class _DeleteAccountButtonWidget extends StatelessWidget {
         ),
       ),
       child: const Text(
-        'Delete Account',
+        'Видалити аккаунт',
         style: TextStyle(
           fontSize: 16.0,
           fontWeight: FontWeight.w500,

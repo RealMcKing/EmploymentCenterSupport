@@ -151,7 +151,7 @@ class VacationDetailsScreen extends StatelessWidget {
         label: Column(
           children: const [
             Text(
-              'Apply for job',
+              'Подайте заявку',
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontWeight: FontWeight.w400,
@@ -159,7 +159,7 @@ class VacationDetailsScreen extends StatelessWidget {
               ),
             ),
             Text(
-              'Be the first',
+              'Будь першим',
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontWeight: FontWeight.w300,

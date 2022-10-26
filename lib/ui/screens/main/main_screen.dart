@@ -64,19 +64,19 @@ class _MainScreenState extends State<MainScreen> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list_rounded),
-            label: 'Vacancy',
+            label: 'Вакансії',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.perm_device_information_rounded),
-            label: 'Information',
+            label: 'Інформація',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.line_style_outlined),
-            label: 'Resume',
+            label: 'Резюме',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.supervised_user_circle_outlined),
-            label: 'Me',
+            label: 'Користувач',
           ),
         ],
       ),

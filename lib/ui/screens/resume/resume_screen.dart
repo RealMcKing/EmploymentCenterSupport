@@ -18,7 +18,7 @@ class ResumeScreen extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         title: const Text(
-          'Resume',
+          'Резюме',
           style: TextStyle(
               color: Color(0xFF000000),
               fontSize: 20.0,
@@ -85,7 +85,7 @@ class ResumeScreen extends StatelessWidget {
         label: Column(
           children: const [
             Text(
-              'Create',
+              'Створити',
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontWeight: FontWeight.w400,
@@ -93,7 +93,7 @@ class ResumeScreen extends StatelessWidget {
               ),
             ),
             Text(
-              'Unique resume',
+              'Унікальне резюме',
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontWeight: FontWeight.w300,

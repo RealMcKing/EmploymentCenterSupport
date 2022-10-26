@@ -2,9 +2,6 @@ import 'package:ecs/domain/factory/screen_factory.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecs/ui/screens/auth/auth_screen.dart';
-import 'package:ecs/ui/screens/main/main_screen.dart';
-
 class LoaderScreen extends StatelessWidget {
   static final _screenFactory = ScreenFactory();
 
@@ -23,6 +20,7 @@ class LoaderScreen extends StatelessWidget {
           }
         },
       ),
+
       // backgroundColor: const Color(0xFFfae2cf),
       // appBar: AppBar(
       //   backgroundColor: Colors.transparent,

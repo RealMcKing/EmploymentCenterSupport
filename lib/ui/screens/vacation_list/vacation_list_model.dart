@@ -11,4 +11,6 @@ class VacationListViewModel extends ChangeNotifier {
       arguments: id,
     );
   }
+
+
 }

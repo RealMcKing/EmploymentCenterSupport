@@ -24,7 +24,7 @@ class VacationFitBackScreen extends StatelessWidget {
               color: Color(0xFFF98121),
             ),
             title: const Text(
-              'Select Resume',
+              'Виберіть резюме',
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: TextStyle(
