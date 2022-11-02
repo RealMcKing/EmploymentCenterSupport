@@ -116,7 +116,7 @@ class AuthScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 16.0),
                           ElevatedButton.icon(
-                            onPressed: model.signInWithGoogle,
+                            onPressed: () => model.signInWithGoogle(context),
                             style: ElevatedButton.styleFrom(
                               textStyle: const TextStyle(
                                 fontSize: 18,

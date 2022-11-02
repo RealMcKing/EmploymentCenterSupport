@@ -1,14 +1,14 @@
-import 'package:ecs/ui/screens/user_editor/user_editor_model.dart';
+import 'package:ecs/ui/screens/create_vacation/create_vacation_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-class UserEditorScreen extends StatelessWidget {
-  const UserEditorScreen({Key? key}) : super(key: key);
+class CreateVacationScreen extends StatelessWidget {
+  const CreateVacationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<UserEditorViewModel>();
+    final model = context.watch<CreateVacationViewModel>();
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
@@ -32,16 +32,16 @@ class UserEditorScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             const Text(
-              'Що ти хочеш змінити?',
+              'Заповніть будь ласка інформацію',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 64,
+                fontSize: 48,
                 fontWeight: FontWeight.w700,
               ),
             ),
             const SizedBox(height: 32.0),
             TextFormField(
-              controller: model.firstNameController,
+              controller: model.nameController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.words,
@@ -55,7 +55,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: "Ім'я",
+                hintText: "Вакансія",
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -88,7 +88,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
-              controller: model.lastNameController,
+              controller: model.companyController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.words,
@@ -102,7 +102,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'Прізвище',
+                hintText: 'Компанія',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -135,7 +135,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
-              controller: model.birthdayController,
+              controller: model.experienceController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.none,
@@ -149,7 +149,7 @@ class UserEditorScreen extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                hintText: 'День народження',
+                hintText: 'Досвід роботи',
                 hintStyle: const TextStyle(
                   color: Color.fromRGBO(111, 119, 137, 1),
                   fontWeight: FontWeight.w400,
@@ -182,7 +182,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
-              controller: model.phoneNumberController,
+              controller: model.experienceController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.none,
@@ -232,7 +232,7 @@ class UserEditorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             TextFormField(
-              controller: model.cityController,
+              controller: model.locationController,
               autocorrect: false,
               enableSuggestions: false,
               textCapitalization: TextCapitalization.words,
@@ -278,8 +278,101 @@ class UserEditorScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16.0),
+            TextFormField(
+              controller: model.salaryController,
+              autocorrect: false,
+              enableSuggestions: false,
+              textCapitalization: TextCapitalization.words,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.name,
+              cursorRadius: const Radius.circular(4),
+              cursorColor: const Color(0xFFF98121),
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+                fontSize: 18,
+              ),
+              decoration: InputDecoration(
+                hintText: 'Прізвище',
+                hintStyle: const TextStyle(
+                  color: Color.fromRGBO(111, 119, 137, 1),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                ),
+                filled: true,
+                isDense: false,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 10,
+                ),
+                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            TextFormField(
+              controller: model.typeOfEmploymentController,
+              autocorrect: false,
+              enableSuggestions: false,
+              textCapitalization: TextCapitalization.none,
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.datetime,
+              cursorRadius: const Radius.circular(4),
+              cursorColor: const Color(0xFFF98121),
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
+                fontSize: 18,
+              ),
+              decoration: InputDecoration(
+                hintText: 'День народження',
+                hintStyle: const TextStyle(
+                  color: Color.fromRGBO(111, 119, 137, 1),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                ),
+                filled: true,
+                isDense: false,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 10,
+                ),
+                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () => model.saveInformation(context),
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(
                   fontSize: 18,
@@ -295,6 +388,7 @@ class UserEditorScreen extends StatelessWidget {
                   vertical: 9,
                 ),
               ),
+              onPressed: () => model.save(context),
               child: const Text(
                 'Зберегти',
               ),

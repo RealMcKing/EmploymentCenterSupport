@@ -85,13 +85,14 @@ class UserScreen extends StatelessWidget {
               child: ClipRRect(
                 clipBehavior: Clip.antiAlias,
                 borderRadius: BorderRadius.circular(50.0),
-                child: Image.network(
-                  user?.photoURL ??
+                child: model.user?.photoURL != null
+                    ? Image.network(
+                  model.user?.photoURL ??
                       'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
-                  width: 80,
-                  height: 80,
-                  fit: BoxFit.cover,
-                ),
+                  fit: BoxFit.cover, height: 80, width: 80,
+                )
+                    : Image.asset('assets/images/user.png',
+                    fit: BoxFit.cover, height: 80, width: 80,),
               ),
             ),
             const SizedBox(height: 4.0),

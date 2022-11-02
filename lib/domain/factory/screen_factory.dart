@@ -1,5 +1,7 @@
 import 'package:ecs/ui/screens/auth/auth_model.dart';
 import 'package:ecs/ui/screens/auth/auth_screen.dart';
+import 'package:ecs/ui/screens/create_vacation/create_vacation_model.dart';
+import 'package:ecs/ui/screens/create_vacation/create_vacation_screen.dart';
 import 'package:ecs/ui/screens/information/information_model.dart';
 import 'package:ecs/ui/screens/information/information_screen.dart';
 import 'package:ecs/ui/screens/information_client/information_client_screen.dart';
@@ -21,7 +23,8 @@ import 'package:ecs/ui/screens/user/user_screen.dart';
 import 'package:ecs/ui/screens/user_editor/user_editor_model.dart';
 import 'package:ecs/ui/screens/vacation_details/vacation_details_model.dart';
 import 'package:ecs/ui/screens/vacation_details/vacation_details_screen.dart';
-import 'package:ecs/ui/screens/vacation_fit_back/vacation_fit_back.dart';
+import 'package:ecs/ui/screens/vacation_fit_back/vacation_fit_back_model.dart';
+import 'package:ecs/ui/screens/vacation_fit_back/vacation_fit_back_screen.dart';
 import 'package:ecs/ui/screens/vacation_list/vacation_list_model.dart';
 import 'package:ecs/ui/screens/vacation_list/vacation_list_screen.dart';
 import 'package:ecs/ui/screens/loader/loader_screen.dart';
@@ -82,8 +85,11 @@ class ScreenFactory {
     );
   }
 
-  Widget makeVacationFitBack() {
-    return const VacationFitBackScreen();
+  Widget makeVacationFitBack(String workId) {
+    return ChangeNotifierProvider(
+      create: (_) => VacationFitBackViewModel(workId: workId),
+      child: const VacationFitBackScreen(),
+    );
   }
 
   Widget makeInformation() {
@@ -132,6 +138,13 @@ class ScreenFactory {
     return ChangeNotifierProvider(
       create: (_) => UserEditorViewModel(),
       child: const UserEditorScreen(),
+    );
+  }
+
+  Widget makeCreateVacation() {
+    return ChangeNotifierProvider(
+      create: (_) => CreateVacationViewModel(),
+      child: const CreateVacationScreen(),
     );
   }
 }

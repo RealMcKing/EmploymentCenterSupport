@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 class ResumeEditorViewModel extends ChangeNotifier {
   final String resumeId;
@@ -20,11 +21,16 @@ class ResumeEditorViewModel extends ChangeNotifier {
 
   ResumeEditorViewModel({required this.resumeId});
 
-  void save(BuildContext context){
-    FirebaseFirestore.instance
-        .collection('resumes')
-        .doc().set(
+  void save(BuildContext context) {
+    final DateTime now = DateTime.now();
+    final DateFormat formatter = DateFormat('dd.MM.yyyy');
+    final CollectionReference collectionReference =
+        FirebaseFirestore.instance.collection('resumes');
+    final String formattedDate = formatter.format(now);
+    final String documentId = collectionReference.doc().id;
+    collectionReference.doc().set(
       <String, dynamic>{
+        "resumeId": documentId,
         "uid": user?.uid,
         "vacancy": vacancyController.text.trim(),
         "university": universityController.text.trim(),
@@ -36,7 +42,7 @@ class ResumeEditorViewModel extends ChangeNotifier {
         "position-date-start": jobDateStartController.text.trim(),
         "position-date-end": jobDateEndController.text.trim(),
         "about-me": aboutMeController.text.trim(),
-        "date":"22.22.2222"
+        "date": formattedDate
       },
     );
     Navigator.pop(context);

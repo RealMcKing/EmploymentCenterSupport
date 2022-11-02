@@ -8,6 +8,7 @@ class VacationListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = context.watch<VacationListViewModel>();
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
@@ -15,11 +16,15 @@ class VacationListScreen extends StatelessWidget {
         backgroundColor: const Color(0xFFFFFFFF),
         elevation: 0,
         title: TextField(
+          onChanged: (value) {
+            model.setQuery();
+          },
+          controller: model.searchController,
           autocorrect: false,
           enableSuggestions: false,
-          textCapitalization: TextCapitalization.none,
-          textInputAction: TextInputAction.next,
-          keyboardType: TextInputType.visiblePassword,
+          textCapitalization: TextCapitalization.words,
+          textInputAction: TextInputAction.send,
+          keyboardType: TextInputType.text,
           cursorRadius: const Radius.circular(4),
           cursorColor: const Color(0xFFF98121),
           style: const TextStyle(
@@ -61,7 +66,22 @@ class VacationListScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: model.reverseSorted,
+            splashRadius: 20,
+            style: IconButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                padding: const EdgeInsets.all(0.0)),
+            icon: Icon(
+              model.isSorted
+                  ? Icons.arrow_downward_rounded
+                  : Icons.arrow_upward_rounded,
+              color: const Color.fromRGBO(249, 129, 33, 1),
+            ),
+          ),
+          IconButton(
+            onPressed: () => model.createVacation(context),
             splashRadius: 20,
             style: IconButton.styleFrom(
                 shape: RoundedRectangleBorder(
@@ -69,14 +89,14 @@ class VacationListScreen extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.all(0.0)),
             icon: const Icon(
-              Icons.filter_list_rounded,
+              Icons.create,
               color: Color.fromRGBO(249, 129, 33, 1),
             ),
           )
         ],
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: FirebaseFirestore.instance.collection('works').snapshots(),
+        stream: model.querySnapshot,
         builder: (BuildContext context, snapshot) {
           if (snapshot.data == null) {
             return const Center(

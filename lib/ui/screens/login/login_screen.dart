@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
               'З поверненням!',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 64,
+                fontSize: 54,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -81,7 +81,7 @@ class _LoginButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.read<LoginViewModel>();
     return ElevatedButton(
-      onPressed: model.signIn,
+      onPressed: () =>model.signIn(context),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
           fontSize: 18,

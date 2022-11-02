@@ -245,7 +245,7 @@ class _SignUpButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.read<SignUpViewModel>();
     return ElevatedButton(
-      onPressed: model.signUp,
+      onPressed: () => model.signUp(context),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
           fontSize: 18,

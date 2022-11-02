@@ -1,4 +1,5 @@
 import 'package:ecs/ui/screens/resume_editor/resume_editor_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +10,7 @@ class ResumeEditorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.read<ResumeEditorViewModel>();
+
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: CustomScrollView(
@@ -56,10 +58,14 @@ class ResumeEditorScreen extends StatelessWidget {
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                "https://images.unsplash.com/photo-1547721064-da6cfb341d50",
-                                fit: BoxFit.cover,
-                              ),
+                              child: model.user?.photoURL != null
+                                  ? Image.network(
+                                      model.user?.photoURL ??
+                                          'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.asset('assets/images/user.png',
+                                      fit: BoxFit.cover),
                             ),
                           ),
                           const SizedBox(width: 8),
@@ -71,7 +77,7 @@ class ResumeEditorScreen extends StatelessWidget {
                                   autocorrect: false,
                                   enableSuggestions: false,
                                   textCapitalization:
-                                  TextCapitalization.sentences,
+                                      TextCapitalization.sentences,
                                   textInputAction: TextInputAction.next,
                                   keyboardType: TextInputType.text,
                                   cursorRadius: const Radius.circular(4),
@@ -119,7 +125,8 @@ class ResumeEditorScreen extends StatelessWidget {
                                   controller: model.universityController,
                                   autocorrect: false,
                                   enableSuggestions: false,
-                                  textCapitalization: TextCapitalization.sentences,
+                                  textCapitalization:
+                                      TextCapitalization.sentences,
                                   textInputAction: TextInputAction.next,
                                   keyboardType: TextInputType.name,
                                   cursorRadius: const Radius.circular(4),
@@ -143,7 +150,8 @@ class ResumeEditorScreen extends StatelessWidget {
                                       vertical: 10,
                                       horizontal: 10,
                                     ),
-                                    fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                    fillColor: const Color.fromRGBO(
+                                        242, 242, 242, 0.48),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(6),
                                       borderSide: BorderSide.none,
@@ -247,7 +255,8 @@ class ResumeEditorScreen extends StatelessWidget {
                                   vertical: 10,
                                   horizontal: 10,
                                 ),
-                                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                fillColor:
+                                    const Color.fromRGBO(242, 242, 242, 0.48),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(6),
                                   borderSide: BorderSide.none,
@@ -297,7 +306,8 @@ class ResumeEditorScreen extends StatelessWidget {
                                   vertical: 10,
                                   horizontal: 10,
                                 ),
-                                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                fillColor:
+                                    const Color.fromRGBO(242, 242, 242, 0.48),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(6),
                                   borderSide: BorderSide.none,
@@ -447,7 +457,8 @@ class ResumeEditorScreen extends StatelessWidget {
                                   vertical: 10,
                                   horizontal: 10,
                                 ),
-                                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                fillColor:
+                                    const Color.fromRGBO(242, 242, 242, 0.48),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(6),
                                   borderSide: BorderSide.none,
@@ -497,7 +508,8 @@ class ResumeEditorScreen extends StatelessWidget {
                                   vertical: 10,
                                   horizontal: 10,
                                 ),
-                                fillColor: const Color.fromRGBO(242, 242, 242, 0.48),
+                                fillColor:
+                                    const Color.fromRGBO(242, 242, 242, 0.48),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(6),
                                   borderSide: BorderSide.none,
@@ -526,7 +538,7 @@ class ResumeEditorScreen extends StatelessWidget {
                         enableSuggestions: false,
                         textCapitalization: TextCapitalization.none,
                         textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.visiblePassword,
+                        keyboardType: TextInputType.text,
                         cursorRadius: const Radius.circular(4),
                         cursorColor: const Color(0xFFF98121),
                         minLines: 20,

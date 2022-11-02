@@ -15,6 +15,7 @@ abstract class MainNavigationRouteNames {
   static const informationSupportScreen = '/main/support';
   static const resumeEditorScreen = '/main/resume_editor';
   static const userEditorScreen = '/main/user_editor';
+  static const createVacationScreen = '/main/create_vacation';
 }
 
 class MainNavigation {
@@ -23,8 +24,6 @@ class MainNavigation {
     MainNavigationRouteNames.loaderScreen: (_) => _screenFactory.makeLoader(),
     MainNavigationRouteNames.authScreen: (_) => _screenFactory.makeAuth(),
     MainNavigationRouteNames.mainScreen: (_) => _screenFactory.makeMain(),
-    MainNavigationRouteNames.vacationFitBackScreen: (_) =>
-        _screenFactory.makeVacationFitBack(),
     MainNavigationRouteNames.informationClientScreen: (_) =>
         _screenFactory.makeInformationClient(),
     MainNavigationRouteNames.informationSupportScreen: (_) =>
@@ -33,6 +32,8 @@ class MainNavigation {
         _screenFactory.makeUserEditor(),
     MainNavigationRouteNames.resetPasswordScreen: (_) =>
         _screenFactory.makeResetPassword(),
+    MainNavigationRouteNames.createVacationScreen: (_) =>
+        _screenFactory.makeCreateVacation(),
   };
 
   Route<Object> onGenerateRoute(RouteSettings settings) {
@@ -48,6 +49,12 @@ class MainNavigation {
         final resumeId = arguments is String ? arguments : '';
         return MaterialPageRoute(
           builder: (_) => _screenFactory.makeResumeEditor(resumeId),
+        );
+      case MainNavigationRouteNames.vacationFitBackScreen:
+        final arguments = settings.arguments;
+        final workId = arguments is String ? arguments : '';
+        return MaterialPageRoute(
+          builder: (_) => _screenFactory.makeVacationFitBack(workId),
         );
       default:
         const widget = Text("Navigation Error");

@@ -3,8 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
 class UserEditorViewModel extends ChangeNotifier {
-  final usersDatabase = FirebaseFirestore.instance.collection('users');
   final User? user = FirebaseAuth.instance.currentUser;
+  final usersDatabase = FirebaseFirestore.instance.collection('users');
+  final userData = FirebaseFirestore.instance
+      .collection("users")
+      .doc(FirebaseAuth.instance.currentUser?.uid)
+      .snapshots();
+
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final birthdayController = TextEditingController();

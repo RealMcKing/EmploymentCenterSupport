@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecs/ui/screens/vacation_details/vacation_details_model.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,7 @@ class VacationDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.read<VacationDetailsViewModel>();
-
+    log(model.workId);
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -147,7 +149,7 @@ class VacationDetailsScreen extends StatelessWidget {
 
       //
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () => model.openFitBack(context, model.workId),
         label: Column(
           children: const [
             Text(
